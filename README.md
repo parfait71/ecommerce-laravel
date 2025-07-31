@@ -1,66 +1,285 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🛒 EazyStore - Plateforme E-Commerce Complète
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📋 Description
 
-## About Laravel
+EazyStore est une plateforme e-commerce complète développée avec Laravel, permettant la vente en ligne de produits avec gestion des commandes, paiements et interface d'administration avancée.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Fonctionnalités
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🛍️ Front-Office Client
+- **Catalogue de produits** avec filtrage, recherche et pagination
+- **Fiche produit** détaillée avec images multiples
+- **Gestion du panier** (ajout, suppression, modification des quantités)
+- **Passage de commande** avec adresse de livraison
+- **Choix de paiement** : en ligne ou à la livraison
+- **Compte client** avec historique des commandes
+- **Téléchargement de factures PDF**
+- **Notifications par email** automatiques
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🎛️ Back-Office Administrateur
+- **Tableau de bord** avec statistiques complètes
+- **Gestion des produits** (CRUD avec images et stock)
+- **Gestion des catégories** (CRUD)
+- **Gestion des commandes** avec modification des statuts
+- **Gestion des utilisateurs** (liste, modification, historique)
+- **Statistiques avancées** :
+  - Chiffre d'affaires total et mensuel
+  - Nombre de commandes par période
+  - Produits les plus vendus
+  - Suivi des paiements
+  - Alertes produits en rupture
 
-## Learning Laravel
+### 💳 Gestion des Paiements
+- **Paiement en ligne** (simulation)
+- **Paiement à la livraison** avec marquage manuel
+- **Gestion des statuts** de paiement
+- **Factures PDF** automatiques
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 📧 Notifications Automatiques
+- **Confirmation de commande**
+- **Mise à jour des statuts** (expédiée, livrée, annulée)
+- **Confirmation de paiement**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🚀 Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Prérequis
+- PHP 8.1 ou supérieur
+- Composer
+- MySQL/MariaDB
+- Node.js et NPM (pour les assets)
 
-## Laravel Sponsors
+### Étapes d'installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1. **Cloner le projet**
+```bash
+git clone https://github.com/parfait1510/EazyStore.git
+cd EazyStore
+```
 
-### Premium Partners
+2. **Installer les dépendances**
+```bash
+composer install
+npm install
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+3. **Configuration de l'environnement**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Contributing
+4. **Configuration de la base de données**
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=eazystore
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. **Migration et seeding**
+```bash
+php artisan migrate
+php artisan db:seed
+```
 
-## Code of Conduct
+6. **Configuration du stockage**
+```bash
+php artisan storage:link
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7. **Compilation des assets**
+```bash
+npm run dev
+```
 
-## Security Vulnerabilities
+8. **Démarrer le serveur**
+```bash
+php artisan serve
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 👥 Comptes par défaut
 
-## License
+### Administrateur
+- **Email** : admin@eazystore.com
+- **Mot de passe** : password
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Client de test
+- **Email** : client@eazystore.com
+- **Mot de passe** : password
+
+## 📊 Fonctionnalités Administrateur
+
+### Tableau de bord
+- **Statistiques générales** : CA total, commandes, produits, clients
+- **Statistiques mensuelles** : CA du mois, commandes du mois
+- **Produits les plus vendus** (top 5)
+- **Commandes par statut**
+- **Produits en rupture de stock**
+- **Commandes récentes** avec actions rapides
+
+### Gestion des produits
+- **Création/Modification** avec upload d'images
+- **Gestion du stock** automatique
+- **Association aux catégories**
+- **Validation des données**
+
+### Gestion des commandes
+- **Visualisation détaillée** des commandes
+- **Modification des statuts** avec emails automatiques
+- **Marquage des paiements** à la livraison
+- **Génération de factures PDF**
+
+## 🛠️ Technologies utilisées
+
+### Backend
+- **Laravel 10** - Framework PHP
+- **MySQL** - Base de données
+- **DomPDF** - Génération de PDF
+- **Laravel Mail** - Envoi d'emails
+
+### Frontend
+- **Bootstrap 5** - Framework CSS
+- **FontAwesome** - Icônes
+- **jQuery** - JavaScript
+
+### Outils de développement
+- **PHPUnit** - Tests unitaires
+- **Laravel Mix** - Compilation des assets
+
+## 📁 Structure du projet
+
+```
+EazyStore/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── Admin/           # Contrôleurs admin
+│   │   └── ...              # Contrôleurs client
+│   ├── Models/              # Modèles Eloquent
+│   ├── Services/            # Services métier
+│   └── Mail/                # Classes d'emails
+├── resources/
+│   ├── views/
+│   │   ├── admin/           # Vues admin
+│   │   ├── emails/          # Templates d'emails
+│   │   └── pdfs/            # Templates PDF
+│   └── ...
+├── database/
+│   ├── migrations/          # Migrations
+│   └── seeders/             # Seeders
+├── tests/                   # Tests unitaires
+└── routes/
+    ├── web.php              # Routes client
+    └── admin.php            # Routes admin
+```
+
+## 🧪 Tests
+
+### Exécuter les tests
+```bash
+php artisan test
+```
+
+### Tests disponibles
+- **OrderTest** - Tests des commandes
+- **CartTest** - Tests du panier
+- **AuthenticationTest** - Tests d'authentification
+
+## 📧 Configuration des emails
+
+### Configuration SMTP
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=votre-email@gmail.com
+MAIL_PASSWORD=votre-mot-de-passe
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=votre-email@gmail.com
+MAIL_FROM_NAME="EazyStore"
+```
+
+## 🔧 Configuration avancée
+
+### Génération de PDF
+Le projet utilise DomPDF pour la génération de factures. Assurez-vous que l'extension PHP GD est activée :
+
+```ini
+extension=gd
+```
+
+### Stockage des fichiers
+Les images sont stockées dans `storage/app/public/`. Créez le lien symbolique :
+
+```bash
+php artisan storage:link
+```
+
+## 📈 Fonctionnalités avancées
+
+### Statistiques en temps réel
+- **Chiffre d'affaires** par période
+- **Top produits** vendus
+- **Alertes** stock faible
+- **Suivi** des paiements
+
+### Sécurité
+- **Validation** des données
+- **Protection CSRF**
+- **Authentification** sécurisée
+- **Gestion des permissions**
+
+### Performance
+- **Pagination** des listes
+- **Optimisation** des requêtes
+- **Cache** des vues
+- **Compression** des assets
+
+### Pages légales
+- **Conditions Générales de Vente (CGV)**
+- **Mentions légales**
+- **Politique de confidentialité**
+
+## 🤝 Contribution
+
+1. Fork le projet
+2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
+3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+## 📝 Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## 👨‍💻 Équipe de développement
+
+- **Front-Office** - [Nom & Prénom]
+- **Back-Office** - [Nom & Prénom]
+- **Tests & Documentation** - [Nom & Prénom]
+
+## 📞 Support
+
+Pour toute question ou problème :
+- **Repository GitHub** : https://github.com/parfait1510/EazyStore.git
+- **Documentation** : Voir les fichiers README.md et GUIDE_ACTION_RAPIDE.md
+
+## 🚀 Déploiement
+
+### Production
+1. **Configuration** de l'environnement
+2. **Optimisation** des assets
+3. **Configuration** de la base de données
+4. **Mise en place** du serveur web
+
+### Variables d'environnement
+```env
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://votre-domaine.com
+```
+
+---
+
+**EazyStore** - Votre boutique en ligne de confiance 🛒✨

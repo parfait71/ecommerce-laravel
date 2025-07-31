@@ -16,5 +16,15 @@ module.exports = {
         },
     },
 
+    darkMode: 'class',
+
     plugins: [require('@tailwindcss/forms')],
+
+    safelist: [
+        'bg-green-600',
+        'bg-green-700',
+        'bg-green-500',
+        'bg-green-800',
+        'text-white'
+    ],
 };

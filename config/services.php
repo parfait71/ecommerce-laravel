@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'wave' => [
+        'api_key' => env('WAVE_API_KEY'),
+    ],
+
 ];
