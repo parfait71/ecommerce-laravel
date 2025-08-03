@@ -1,17 +1,32 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+{{-- resources/views/dashboard.blade.php --}}
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+@section('header')
+    <h2 class="text-center text-primary fw-bold fs-3">
+        Dashboard
+    </h2>
+@endsection
+
+@section('content')
+    <div class="py-4 bg-light">
+        <div class="container">
+            <div class="card shadow border-0">
+                <div class="card-body">
+
+                    @if(Auth::check())
+                        <div class="mb-4">
+                            <h5 class="fw-bold">Informations Utilisateur</h5>
+                            <p><strong>Email :</strong> {{ Auth::user()->email }}</p>
+                            <p><strong>Rôle :</strong> {{ Auth::user()->is_admin ? 'ADMIN' : 'CLIENT' }}</p>
+                        </div>
+                    @endif
+
+                    <a href="{{ route('products.index') }}" class="btn btn-primary">
+                        Accéder au catalogue
+                    </a>
+
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection

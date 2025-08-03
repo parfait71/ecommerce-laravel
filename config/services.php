@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'wave' => [
+        'api_url' => env('WAVE_API_URL', 'https://api.wave.com'),
+        'api_key' => env('WAVE_API_KEY'),
+        'merchant_id' => env('WAVE_MERCHANT_ID'),
+    ],
+
 ];

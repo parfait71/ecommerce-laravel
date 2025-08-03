@@ -11,9 +11,27 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $query = \App\Models\Product::query();
+
+        // Recherche par mots-clés
+        if ($request->filled('keyword')) {
+            $keyword = $request->input('keyword');
+            $query->where(function($q) use ($keyword) {
+                $q->where('name', 'like', "%$keyword%")
+                  ->orWhere('description', 'like', "%$keyword%");
+            });
+        }
+
+        // Filtrage par catégorie
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->input('category'));
+        }
+
+        $products = $query->paginate(12);
+        $categories = \App\Models\Category::all();
+        return view('catalogue', compact('products', 'categories'));
     }
 
     /**
@@ -45,7 +63,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = \App\Models\Product::with('images')->findOrFail($id);
+        return view('products.show', compact('product'));
     }
 
     /**

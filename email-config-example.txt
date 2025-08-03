@@ -1,0 +1,31 @@
+# Configuration Email pour EazyStore
+# Ajoutez ces lignes à votre fichier .env
+
+# Configuration SMTP (exemple avec Gmail)
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=votre-email@gmail.com
+MAIL_PASSWORD=votre-mot-de-passe-app
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=gnaweparfait1@gmail.com
+MAIL_FROM_NAME="EazyStore"
+
+# Alternative avec Mailtrap (pour les tests)
+# MAIL_MAILER=smtp
+# MAIL_HOST=smtp.mailtrap.io
+# MAIL_PORT=2525
+# MAIL_USERNAME=votre-username-mailtrap
+# MAIL_PASSWORD=votre-password-mailtrap
+# MAIL_ENCRYPTION=tls
+
+# Alternative avec SendGrid
+# MAIL_MAILER=smtp
+# MAIL_HOST=smtp.sendgrid.net
+# MAIL_PORT=587
+# MAIL_USERNAME=apikey
+# MAIL_PASSWORD=votre-api-key-sendgrid
+# MAIL_ENCRYPTION=tls
+
+# Pour les tests locaux (emails stockés dans storage/logs)
+# MAIL_MAILER=log 
